@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/src/common/directives/core_directives", "../api.service", './herodetails.component'], function(exports_1) {
+System.register(["angular2/core", "angular2/src/common/directives/core_directives", "./apihero.service", './herodetails.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, core_directives_1, api_service_1, herodetails_component_1;
+    var core_1, core_directives_1, apihero_service_1, herodetails_component_1;
     var HeroComponent;
     return {
         setters:[
@@ -18,8 +18,8 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
             function (core_directives_1_1) {
                 core_directives_1 = core_directives_1_1;
             },
-            function (api_service_1_1) {
-                api_service_1 = api_service_1_1;
+            function (apihero_service_1_1) {
+                apihero_service_1 = apihero_service_1_1;
             },
             function (herodetails_component_1_1) {
                 herodetails_component_1 = herodetails_component_1_1;
@@ -33,6 +33,17 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
                     this.getHeros();
                 };
                 HeroComponent.prototype.getHeros = function () {
+                    var _this = this;
+                    this.service.get(function (json) {
+                        if (json) {
+                            if (!_this.heros) {
+                                _this.heros = [];
+                            }
+                            _this.heros = json.heros;
+                        }
+                    });
+                };
+                HeroComponent.prototype.getStaticHeros = function () {
                     this.heros =
                         [
                             { "id": 11, "name": "Mr. Nice" },
@@ -55,11 +66,11 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
                     core_1.Component({
                         selector: "hero",
                         templateUrl: "partial/hero",
-                        providers: [api_service_1.ApiService],
+                        providers: [apihero_service_1.ApiHeroService],
                         directives: [core_directives_1.CORE_DIRECTIVES, herodetails_component_1.HeroDetailsComponent],
                         styles: ["\n\t  .selected {\n\t\tbackground-color: #CFD8DC !important;\n\t\tcolor: green;\n\t  }\n\t  .heroes {\n\t\tmargin: 0 0 2em 0;\n\t\tlist-style-type: none;\n\t\tpadding: 0;\n\t\twidth: 10em;\n\t  }\n\t  .heroes li {\n\t\tcursor: pointer;\n\t\tposition: relative;\n\t\tleft: 0;\n\t\tbackground-color: #EEE;\n\t\tmargin: .5em;\n\t\tpadding: .3em 0;\n\t\theight: 1.6em;\n\t\tborder-radius: 4px;\n\t  }\n\t  .heroes li.selected:hover {\n\t\tbackground-color: #BBD8DC !important;\n\t\tcolor: white;\n\t  }\n\t  .heroes li:hover {\n\t\tcolor: #607D8B;\n\t\tbackground-color: #DDD;\n\t\tleft: .1em;\n\t  }\n\t  .heroes .text {\n\t\tposition: relative;\n\t\ttop: -3px;\n\t  }\n\t  .heroes .badge {\n\t\tdisplay: inline-block;\n\t\tfont-size: small;\n\t\tcolor: white;\n\t\tpadding: 0.8em 0.7em 0 0.7em;\n\t\tbackground-color: #607D8B;\n\t\tline-height: 1em;\n\t\tposition: relative;\n\t\tleft: -1px;\n\t\ttop: -4px;\n\t\theight: 1.8em;\n\t\tmargin-right: .8em;\n\t\tborder-radius: 4px 0 0 4px;\n\t  }\n\t"]
                     }), 
-                    __metadata('design:paramtypes', [api_service_1.ApiService])
+                    __metadata('design:paramtypes', [apihero_service_1.ApiHeroService])
                 ], HeroComponent);
                 return HeroComponent;
             })();

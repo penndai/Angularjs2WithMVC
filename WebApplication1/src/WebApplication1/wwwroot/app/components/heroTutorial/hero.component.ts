@@ -1,13 +1,13 @@
 ﻿import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/src/common/directives/core_directives";
-import {ApiService} from "../api.service";
+import {ApiHeroService} from "./apihero.service";
 import {Hero} from './hero';
 import {HeroDetailsComponent} from './herodetails.component';
 
 @Component({
 	selector: "hero",
 	templateUrl: "partial/hero",
-	providers: [ApiService],
+	providers: [ApiHeroService],
 	directives: [CORE_DIRECTIVES, HeroDetailsComponent],
 	styles: [`
 	  .selected {
@@ -60,7 +60,7 @@ import {HeroDetailsComponent} from './herodetails.component';
 	`]
 })
 export class HeroComponent implements OnInit {
-	constructor(private service: ApiService) { }
+	constructor(private service: ApiHeroService) { }
 
 	public heros: Hero[];
 	public selectedhero: Hero;
@@ -70,6 +70,18 @@ export class HeroComponent implements OnInit {
 	}
 
 	getHeros() {
+		this.service.get(json=> {
+			if (json) {
+				if (!this.heros) {
+					this.heros = [];
+				}
+				this.heros = json.heros;
+				//console.log(this.heros);
+			}
+		});
+	}
+
+	getStaticHeros() {
 		this.heros =
 			[		
 				{ "id": 11, "name": "Mr. Nice" },
