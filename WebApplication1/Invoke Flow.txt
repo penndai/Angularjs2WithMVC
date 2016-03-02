@@ -1,0 +1,12 @@
+HomeController.IndexView
+
+_Layout.cshtml
+
+Index View populated via @RenderBody
+
+AngularJS 2 app component ---> populate app/app.html
+
+display 3 routes;
+
+each route has different components
+

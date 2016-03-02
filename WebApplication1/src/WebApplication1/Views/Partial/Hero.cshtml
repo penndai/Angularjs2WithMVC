@@ -1,0 +1,28 @@
+﻿@{
+	ViewBag.Title = "Heros";
+}
+<hero>
+	<h2>Heros</h2>
+	<div *ngIf="heros && heros.length>0">
+		<blockquote>There are {{heros.length}} heros</blockquote>
+		<ul class="heroes">
+			<li *ngFor="#hero of heros" class="selected" [class.selected]="hero===selectedhero" (click)="onselect(hero)">
+				<span class="badge">{{hero.id}}</span> {{hero.name}}
+			</li>
+		</ul>
+
+		<hero-detail [hero]="selectedhero">
+		</hero-detail>
+		@*<div *ngIf="selectedhero">
+			<h2>{{selectedhero.name}} details!</h2>
+			<div><label>id: </label>{{selectedhero.id}}</div>
+			<div>
+				<label>name: </label>
+				<input [(ngModel)]="selectedhero.name" placeholder="name" />
+			</div>
+
+		</div>*@
+	</div>
+	
+	<blockquote *ngIf="!heros || heros.length==0">No heros!</blockquote>
+</hero>
