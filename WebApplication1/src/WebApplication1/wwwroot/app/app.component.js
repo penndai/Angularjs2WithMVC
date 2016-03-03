@@ -45,7 +45,7 @@ System.register(["angular2/core", "angular2/router", "./components/static.compon
                             new router_1.AsyncRoute({
                                 path: "/heros",
                                 name: "Heros",
-                                loader: function () { return System.import("app/components/heroTutorial/hero.component").then(function (x) { return x["HeroComponent"]; }); }
+                                loader: function () { return System.import("app/components/heroTutorial/heroapp.component").then(function (x) { return x["HeroAppComponent"]; }); }
                             })
                         ];
                         this.router.config(this.routes);

@@ -1,7 +1,7 @@
 ﻿import {Component, OnInit} from "angular2/core";
 
 @Component({
-    selector: "mvc",
+   // selector: "mvc1",
     templateUrl: "/partial/message"
 })
 export class MvcComponent implements OnInit {

@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, core_directives_1, apihero_service_1, herodetails_component_1;
-    var HeroComponent;
+    var HeroListComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -25,14 +25,14 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
                 herodetails_component_1 = herodetails_component_1_1;
             }],
         execute: function() {
-            HeroComponent = (function () {
-                function HeroComponent(service) {
+            HeroListComponent = (function () {
+                function HeroListComponent(service) {
                     this.service = service;
                 }
-                HeroComponent.prototype.ngOnInit = function () {
+                HeroListComponent.prototype.ngOnInit = function () {
                     this.getHeros();
                 };
-                HeroComponent.prototype.getHeros = function () {
+                HeroListComponent.prototype.getHeros = function () {
                     var _this = this;
                     this.service.get(function (json) {
                         if (json) {
@@ -43,7 +43,7 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
                         }
                     });
                 };
-                HeroComponent.prototype.getStaticHeros = function () {
+                HeroListComponent.prototype.getStaticHeros = function () {
                     this.heros =
                         [
                             { "id": 11, "name": "Mr. Nice" },
@@ -58,24 +58,24 @@ System.register(["angular2/core", "angular2/src/common/directives/core_directive
                             { "id": 20, "name": "Tornado" }
                         ];
                 };
-                HeroComponent.prototype.onselect = function (hero) {
+                HeroListComponent.prototype.onselect = function (hero) {
                     this.selectedhero = hero;
                     console.log(this.selectedhero.name);
                 };
-                HeroComponent = __decorate([
+                HeroListComponent = __decorate([
                     core_1.Component({
-                        selector: "hero",
+                        selector: "heroes",
                         templateUrl: "partial/hero",
-                        providers: [apihero_service_1.ApiHeroService],
+                        //providers: [ApiHeroService],
                         directives: [core_directives_1.CORE_DIRECTIVES, herodetails_component_1.HeroDetailsComponent],
                         styles: ["\n\t  .selected {\n\t\tbackground-color: #CFD8DC !important;\n\t\tcolor: green;\n\t  }\n\t  .heroes {\n\t\tmargin: 0 0 2em 0;\n\t\tlist-style-type: none;\n\t\tpadding: 0;\n\t\twidth: 10em;\n\t  }\n\t  .heroes li {\n\t\tcursor: pointer;\n\t\tposition: relative;\n\t\tleft: 0;\n\t\tbackground-color: #EEE;\n\t\tmargin: .5em;\n\t\tpadding: .3em 0;\n\t\theight: 1.6em;\n\t\tborder-radius: 4px;\n\t  }\n\t  .heroes li.selected:hover {\n\t\tbackground-color: #BBD8DC !important;\n\t\tcolor: white;\n\t  }\n\t  .heroes li:hover {\n\t\tcolor: #607D8B;\n\t\tbackground-color: #DDD;\n\t\tleft: .1em;\n\t  }\n\t  .heroes .text {\n\t\tposition: relative;\n\t\ttop: -3px;\n\t  }\n\t  .heroes .badge {\n\t\tdisplay: inline-block;\n\t\tfont-size: small;\n\t\tcolor: white;\n\t\tpadding: 0.8em 0.7em 0 0.7em;\n\t\tbackground-color: #607D8B;\n\t\tline-height: 1em;\n\t\tposition: relative;\n\t\tleft: -1px;\n\t\ttop: -4px;\n\t\theight: 1.8em;\n\t\tmargin-right: .8em;\n\t\tborder-radius: 4px 0 0 4px;\n\t  }\n\t"]
                     }), 
                     __metadata('design:paramtypes', [apihero_service_1.ApiHeroService])
-                ], HeroComponent);
-                return HeroComponent;
+                ], HeroListComponent);
+                return HeroListComponent;
             })();
-            exports_1("HeroComponent", HeroComponent);
+            exports_1("HeroListComponent", HeroListComponent);
         }
     }
 });
-//# sourceMappingURL=hero.component.js.map
+//# sourceMappingURL=herolist.component.js.map

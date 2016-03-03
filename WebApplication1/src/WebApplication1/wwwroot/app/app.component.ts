@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
 				new AsyncRoute({
 					path: "/heros",
 					name: "Heros",
-					loader:()=>System.import("app/components/heroTutorial/hero.component").then(x=>x["HeroComponent"])
+					loader:()=>System.import("app/components/heroTutorial/heroapp.component").then(x=>x["HeroAppComponent"])
 				})
             ];
 

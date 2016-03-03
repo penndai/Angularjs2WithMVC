@@ -5,9 +5,9 @@ import {Hero} from './hero';
 import {HeroDetailsComponent} from './herodetails.component';
 
 @Component({
-	selector: "hero",
+	selector: "heroes",
 	templateUrl: "partial/hero",
-	providers: [ApiHeroService],
+	//providers: [ApiHeroService],
 	directives: [CORE_DIRECTIVES, HeroDetailsComponent],
 	styles: [`
 	  .selected {
@@ -59,7 +59,7 @@ import {HeroDetailsComponent} from './herodetails.component';
 	  }
 	`]
 })
-export class HeroComponent implements OnInit {
+export class HeroListComponent implements OnInit {
 	constructor(private service: ApiHeroService) { }
 
 	public heros: Hero[];

@@ -8,5 +8,8 @@ AngularJS 2 app component ---> populate app/app.html
 
 display 3 routes;
 
-each route has different components
+each route has different components, from the component.ts file, set the templateUrl, this templateUrl is the actually url to invoke the 
+asp.net mvc controller and methods using MVC Route.
+
+When routeConfig or routeDefition to define the route, 'selector' property is NOT important anymore, because the templat/template html will be put on the location where <router-outlet> locates. 
 

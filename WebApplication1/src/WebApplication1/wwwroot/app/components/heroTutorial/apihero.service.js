@@ -26,9 +26,9 @@ System.register(["rxjs/Rx", "angular2/http", "angular2/core"], function(exports_
                 }
                 ApiHeroService.prototype.get = function (HendleJson) {
                     //this.http.get("api/hero").map(response => response.json()).subscribe(HendleJson);
-                    var result = this.http.get("api/hero");
+                    var result = this.http.get("api/hero").map(function (x) { return x.json(); });
                     console.log(result);
-                    this.http.get("api/hero").subscribe(HendleJson);
+                    result.subscribe(HendleJson);
                 };
                 ApiHeroService = __decorate([
                     core_1.Injectable(), 
