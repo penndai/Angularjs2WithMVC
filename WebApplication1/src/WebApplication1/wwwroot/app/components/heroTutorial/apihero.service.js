@@ -24,8 +24,11 @@ System.register(["rxjs/Rx", "angular2/http", "angular2/core"], function(exports_
                 function ApiHeroService(http) {
                     this.http = http;
                 }
-                ApiHeroService.prototype.get = function (onNext) {
-                    this.http.get("api/hero").map(function (response) { return response.json(); }).subscribe(onNext);
+                ApiHeroService.prototype.get = function (HendleJson) {
+                    //this.http.get("api/hero").map(response => response.json()).subscribe(HendleJson);
+                    var result = this.http.get("api/hero");
+                    console.log(result);
+                    this.http.get("api/hero").subscribe(HendleJson);
                 };
                 ApiHeroService = __decorate([
                     core_1.Injectable(), 
