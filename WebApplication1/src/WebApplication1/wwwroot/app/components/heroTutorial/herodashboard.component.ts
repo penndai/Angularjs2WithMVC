@@ -7,8 +7,9 @@ import {ApiHeroService} from './apihero.service'
 @Component({
 	//selector: 'herodashboard',
 	
-	templateUrl: 'partial/DashBoard',
-	
+	//templateUrl: 'partial/DashBoard',
+	templateUrl:'app/components/heroTutorial/html/dashboard.html',
+	styleUrls: ['app/components/heroTutorial/css/dashboard.component.css'],
 	directives: [CORE_DIRECTIVES],
 })
 
@@ -34,7 +35,7 @@ export class HeroDashBoardComponent implements OnInit {
 				}
 				
 				this.heros = json.heros;
-				//console.log(this.heros);
+				console.log(this.heros);
 			}
 		});
 	}

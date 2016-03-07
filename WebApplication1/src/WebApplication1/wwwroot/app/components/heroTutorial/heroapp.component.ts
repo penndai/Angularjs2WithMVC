@@ -33,13 +33,14 @@ export class HeroAppComponent implements OnInit {
 				{
 					path: '/herolist',
 					name: 'HeroList',
-					component: HeroListComponent
+					component: HeroListComponent,
+					useAsDefault: true
 				},
 				{
 					path:'/dashboard',
 					name: 'DashBoard',
 					component: HeroDashBoardComponent,
-					useAsDefault:true
+					useAsDefault:false
 				},
 				{
 					path: '/herodetail/:id',

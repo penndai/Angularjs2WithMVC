@@ -45,13 +45,16 @@ System.register(["angular2/core", 'angular2/router', "angular2/src/common/direct
                                 _this.heros = [];
                             }
                             _this.heros = json.heros;
+                            console.log(_this.heros);
                         }
                     });
                 };
                 HeroDashBoardComponent = __decorate([
                     core_1.Component({
                         //selector: 'herodashboard',
-                        templateUrl: 'partial/DashBoard',
+                        //templateUrl: 'partial/DashBoard',
+                        templateUrl: 'app/components/heroTutorial/html/dashboard.html',
+                        styleUrls: ['app/components/heroTutorial/css/dashboard.component.css'],
                         directives: [core_directives_1.CORE_DIRECTIVES],
                     }), 
                     __metadata('design:paramtypes', [apihero_service_1.ApiHeroService, router_1.Router])

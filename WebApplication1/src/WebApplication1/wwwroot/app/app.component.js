@@ -58,7 +58,8 @@ System.register(["angular2/core", "angular2/router", "./components/static.compon
                     core_1.Component({
                         selector: "app",
                         templateUrl: "/app/app.html",
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        styleUrls: ['app/css/app.component.css']
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.Location])
                 ], AppComponent);

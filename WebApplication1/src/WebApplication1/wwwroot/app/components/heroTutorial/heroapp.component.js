@@ -43,13 +43,14 @@ System.register(["angular2/core", "./apihero.service", "angular2/router", "./her
                             {
                                 path: '/herolist',
                                 name: 'HeroList',
-                                component: herolist_component_1.HeroListComponent
+                                component: herolist_component_1.HeroListComponent,
+                                useAsDefault: true
                             },
                             {
                                 path: '/dashboard',
                                 name: 'DashBoard',
                                 component: herodashboard_component_1.HeroDashBoardComponent,
-                                useAsDefault: true
+                                useAsDefault: false
                             },
                             {
                                 path: '/herodetail/:id',

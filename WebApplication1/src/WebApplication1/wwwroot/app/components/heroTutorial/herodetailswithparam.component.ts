@@ -6,7 +6,8 @@ import {Hero} from './Hero';
 @Component({
 	//selector: 'herodetailswithparam',
 	//templateUrl: './html/herodetailswithparam.html',
-	templateUrl: 'partial/Herodetailswithparam'
+	templateUrl: 'partial/Herodetailswithparam',
+	styleUrls: ['app/components/heroTutorial/css/herodetails.component.css']
 })
 
 export class HeroDetailWithParamComponent implements OnInit{

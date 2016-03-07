@@ -7,7 +7,8 @@ declare var System: any;
 @Component({
     selector: "app",
     templateUrl: "/app/app.html",
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES],
+	styleUrls:['app/css/app.component.css']
 })
 
 export class AppComponent implements OnInit {
