@@ -36,9 +36,14 @@ namespace WebApplication1.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult Get(int id)
         {
-            return "value";
+			Heroes.Add(new Hero() { id = 11, name = "Mr. Nice" });
+			Heroes.Add(new Hero() { id = 12, name = "Narco" });
+			Heroes.Add(new Hero() { id = 13, name = "Bombasto" });
+			Heroes.Add(new Hero() { id = 14, name = "Celeritas" });
+
+			return new JsonResult(new { hero = Heroes.Find(x => x.id == id) });
         }
 
         // POST api/values

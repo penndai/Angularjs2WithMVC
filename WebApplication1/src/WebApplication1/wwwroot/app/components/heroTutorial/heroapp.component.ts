@@ -3,6 +3,7 @@ import {ApiHeroService} from "./apihero.service";
 import {Router, RouteDefinition, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from "angular2/router";
 import {HeroListComponent} from "./herolist.component";
 import {HeroDashBoardComponent} from "./herodashboard.component";
+import {HeroDetailWithParamComponent} from './herodetailswithparam.component';
 
 @Component({
 	selector: 'heroapp',
@@ -39,6 +40,11 @@ export class HeroAppComponent implements OnInit {
 					name: 'DashBoard',
 					component: HeroDashBoardComponent,
 					useAsDefault:true
+				},
+				{
+					path: '/herodetail/:id',
+					name: 'DashBoardHeroDetail',
+					component: HeroDetailWithParamComponent
 				}
 			];
 

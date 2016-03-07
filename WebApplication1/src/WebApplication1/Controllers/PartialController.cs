@@ -12,5 +12,8 @@ namespace WebApplication1.Controllers
         public IActionResult Numbers() => PartialView();
 
 		public IActionResult Hero() => PartialView();
-    }
+		public IActionResult DashBoard() => PartialView();
+		public IActionResult Herodetailswithparam() => PartialView();
+
+	}
 }

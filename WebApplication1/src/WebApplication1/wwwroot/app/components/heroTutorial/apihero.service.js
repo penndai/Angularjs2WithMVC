@@ -24,11 +24,16 @@ System.register(["rxjs/Rx", "angular2/http", "angular2/core"], function(exports_
                 function ApiHeroService(http) {
                     this.http = http;
                 }
+                //HandlJson is the call back method to operate the data from web service, input param is json type, no return value
                 ApiHeroService.prototype.get = function (HendleJson) {
                     //this.http.get("api/hero").map(response => response.json()).subscribe(HendleJson);
                     var result = this.http.get("api/hero").map(function (x) { return x.json(); });
-                    console.log(result);
+                    //console.log(result);
                     result.subscribe(HendleJson);
+                };
+                ApiHeroService.prototype.getHero = function (id, HandleJson) {
+                    var result = this.http.get("api/hero/" + id).map(function (x) { return x.json(); });
+                    result.subscribe(HandleJson);
                 };
                 ApiHeroService = __decorate([
                     core_1.Injectable(), 
