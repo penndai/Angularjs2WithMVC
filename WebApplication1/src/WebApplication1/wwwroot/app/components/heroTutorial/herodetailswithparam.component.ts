@@ -5,8 +5,8 @@ import {Hero} from './Hero';
 
 @Component({
 	//selector: 'herodetailswithparam',
-	//templateUrl: './html/herodetailswithparam.html',
-	templateUrl: 'partial/Herodetailswithparam',
+	templateUrl: 'app/components/heroTutorial/html/herodetailswithparam.html',
+	//templateUrl: 'partial/Herodetailswithparam',
 	styleUrls: ['app/components/heroTutorial/css/herodetails.component.css']
 })
 

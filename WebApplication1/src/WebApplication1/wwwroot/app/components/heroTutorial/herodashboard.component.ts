@@ -8,6 +8,7 @@ import {ApiHeroService} from './apihero.service'
 	//selector: 'herodashboard',
 	
 	//templateUrl: 'partial/DashBoard',
+
 	templateUrl:'app/components/heroTutorial/html/dashboard.html',
 	styleUrls: ['app/components/heroTutorial/css/dashboard.component.css'],
 	directives: [CORE_DIRECTIVES],

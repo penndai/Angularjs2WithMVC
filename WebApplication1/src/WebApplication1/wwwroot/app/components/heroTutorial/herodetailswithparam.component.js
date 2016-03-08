@@ -41,8 +41,8 @@ System.register(['angular2/core', "angular2/router", './apihero.service'], funct
                 HeroDetailWithParamComponent = __decorate([
                     core_1.Component({
                         //selector: 'herodetailswithparam',
-                        //templateUrl: './html/herodetailswithparam.html',
-                        templateUrl: 'partial/Herodetailswithparam',
+                        templateUrl: 'app/components/heroTutorial/html/herodetailswithparam.html',
+                        //templateUrl: 'partial/Herodetailswithparam',
                         styleUrls: ['app/components/heroTutorial/css/herodetails.component.css']
                     }), 
                     __metadata('design:paramtypes', [apihero_service_1.ApiHeroService, router_1.RouteParams])
