@@ -27,16 +27,26 @@ System.register(["rxjs/Rx", "angular2/http", 'rxjs/Observable', "angular2/core"]
                 function ApiHeroService(http) {
                     this.http = http;
                 }
+                ApiHeroService.prototype.handlerror = function (error) {
+                    console.error(error);
+                    return Observable_1.Observable.throw(error.json().error || 'Server error');
+                };
+                ApiHeroService.prototype.addHero = function (name) {
+                    var body = JSON.stringify({ name: name });
+                    //var body = name;
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    return this.http.post("api/hero", body, options)
+                        .map(function (res) { return res.json().hero; })
+                        .do(function (x) { return console.log(x); })
+                        .catch(this.handlerror);
+                };
                 ApiHeroService.prototype.getHerosJson = function () {
                     var data = this.http.get("api/hero")
                         .map(function (x) { return x.json().heros; })
                         .do(function (x) { return console.log(x); })
                         .catch(this.handlerror);
                     return data;
-                };
-                ApiHeroService.prototype.handlerror = function (error) {
-                    console.error(error);
-                    return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
                 //HandlJson is the call back method to operate the data from web service, input param is json type, no return value
                 ApiHeroService.prototype.get = function (HendleJson) {

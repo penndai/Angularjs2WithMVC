@@ -36,6 +36,10 @@ System.register(["angular2/core", 'angular2/router', "angular2/src/common/direct
                 HeroListComponent.prototype.ngOnInit = function () {
                     this.getHerosJson();
                 };
+                HeroListComponent.prototype.addHero = function () {
+                    var _this = this;
+                    this.service.addHero(this.newheroname).subscribe(function (hero) { return _this.heros.push(hero); }, function (error) { return console.log(error); });
+                };
                 HeroListComponent.prototype.getHerosJson = function () {
                     var _this = this;
                     this.service.getHerosJson().subscribe(function (x) { return _this.heros = x; }, function (error) { return console.log(error); });

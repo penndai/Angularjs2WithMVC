@@ -30,9 +30,11 @@ System.register(['angular2/core', "angular2/router", './apihero.service'], funct
                 HeroDetailWithParamComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var id = parseInt(this._routeParams.get('id'));
+                    // pass in the callback method as parameter
                     //this._heroService.getHero(id, json=> {			
                     //	this.hero = json.hero;			
                     //});
+                    // invoke subscribe method of observable object to set the hero object
                     this._heroService.getHeroJson(id).subscribe(function (x) { return _this.hero = x; }, function (error) { return console.log(error); });
                 };
                 HeroDetailWithParamComponent.prototype.goBack = function () {

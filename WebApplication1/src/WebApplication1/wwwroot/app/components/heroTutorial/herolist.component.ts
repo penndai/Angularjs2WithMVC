@@ -1,5 +1,6 @@
 ﻿import {Component, OnInit} from "angular2/core";
 import {Router} from 'angular2/router';
+import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from "angular2/src/common/directives/core_directives";
 import {ApiHeroService} from "./apihero.service";
 import {Hero} from './hero';
@@ -66,9 +67,15 @@ export class HeroListComponent implements OnInit {
 
 	public heros: Hero[];
 	public selectedhero: Hero;
+	public newheroname: string;
 
 	ngOnInit(){
 		this.getHerosJson();
+	}
+
+	addHero() {
+	
+		this.service.addHero(this.newheroname).subscribe(hero  => this.heros.push(hero), error => console.log(error));
 	}
 
 	getHerosJson() {

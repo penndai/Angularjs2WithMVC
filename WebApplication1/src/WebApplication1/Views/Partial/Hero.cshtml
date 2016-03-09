@@ -31,4 +31,7 @@
 	</div>
 	
 	<blockquote *ngIf="!heros || heros.length==0">No heros!</blockquote>
+	
+	<input [(ngModel)]="newheroname" placeholder="name"/>
+	<button [disabled]="!newheroname" (click)="addHero()">Add new hero</button>
 </hero>

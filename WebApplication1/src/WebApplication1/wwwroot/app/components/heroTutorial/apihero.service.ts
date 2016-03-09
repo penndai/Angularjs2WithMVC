@@ -1,6 +1,6 @@
 ﻿import "rxjs/Rx"
-import {Http, Response} from "angular2/http";
-import {Observable}     from 'rxjs/Observable';
+import {Http, Response, Headers, RequestOptions} from "angular2/http";
+import {Observable} from 'rxjs/Observable';
 import {Injectable} from "angular2/core";
 
 import {Hero} from "./Hero";
@@ -8,6 +8,24 @@ import {Hero} from "./Hero";
 @Injectable()
 export class ApiHeroService {
 	constructor(private http: Http) { }
+	
+	private handlerror(error: Response) {
+		console.error(error);
+		return Observable.throw(error.json().error || 'Server error');
+	}
+
+	addHero(name: string): Observable<Hero>
+	{
+		var body = JSON.stringify({ name });
+		//var body = name;
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+
+		return this.http.post("api/hero", body, options)
+			.map(res => <Hero>res.json().hero)
+			.do(x=>console.log(x))
+			.catch(this.handlerror);
+	}
 
 	getHerosJson() {
 		var data =
@@ -15,13 +33,8 @@ export class ApiHeroService {
 				.map(x=> <Hero[]>x.json().heros)
 				.do(x=> console.log(x))
 				.catch(this.handlerror);
-		
-		return data;
-	}
 
-	private handlerror(error: Response) {
-		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
+		return data;
 	}
 
 	//HandlJson is the call back method to operate the data from web service, input param is json type, no return value

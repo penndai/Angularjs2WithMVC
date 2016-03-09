@@ -18,16 +18,28 @@ namespace WebApplication1.Controllers
     [Route("api/[controller]")]
     public class HeroController : Controller
     {
-		private List<Hero> Heroes = new List<Hero>();
+		private static List<Hero> _heroes;
+		private static List<Hero> Heroes
+		{
+			get
+			{
+				if (_heroes == null || _heroes.Count == 0)
+				{
+					_heroes = new List<Hero>();
+					_heroes.Add(new Hero() { id = 11, name = "Mr. Nice" });
+					_heroes.Add(new Hero() { id = 12, name = "Narco" });
+					_heroes.Add(new Hero() { id = 13, name = "Bombasto" });
+					_heroes.Add(new Hero() { id = 14, name = "Celeritas" });
+				}
+
+				return _heroes;
+			}
+		}
+
         // GET: api/values
         [HttpGet]
         public async Task<JsonResult> Get()
-        {			
-			Heroes.Add(new Hero() { id=11, name= "Mr. Nice" });
-			Heroes.Add(new Hero() { id=12, name= "Narco" });
-			Heroes.Add(new Hero() { id=13, name= "Bombasto"});
-			Heroes.Add(new Hero() { id=14, name= "Celeritas" });
-
+        {	
 			var rand = new Random();
 			//await Task.Delay(rand.Next(0, 50));
 
@@ -38,18 +50,19 @@ namespace WebApplication1.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-			Heroes.Add(new Hero() { id = 11, name = "Mr. Nice" });
-			Heroes.Add(new Hero() { id = 12, name = "Narco" });
-			Heroes.Add(new Hero() { id = 13, name = "Bombasto" });
-			Heroes.Add(new Hero() { id = 14, name = "Celeritas" });
-
 			return new JsonResult(new { hero = Heroes.Find(x => x.id == id) });
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public JsonResult Post([FromBody]Hero newhero)
         {
+			//Hero newhero = new Hero();
+			//newhero.name = value;
+			newhero.id = Heroes.Max(x => x.id) + 1;
+
+			Heroes.Add(newhero);
+			return new JsonResult(new { hero=newhero});
         }
 
         // PUT api/values/5
