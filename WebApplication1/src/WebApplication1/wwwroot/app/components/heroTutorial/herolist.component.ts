@@ -68,7 +68,11 @@ export class HeroListComponent implements OnInit {
 	public selectedhero: Hero;
 
 	ngOnInit(){
-		this.getHeros();
+		this.getHerosJson();
+	}
+
+	getHerosJson() {
+		this.service.getHerosJson().subscribe(x=> this.heros = x, error=> console.log(error));
 	}
 
 	getHeros() {

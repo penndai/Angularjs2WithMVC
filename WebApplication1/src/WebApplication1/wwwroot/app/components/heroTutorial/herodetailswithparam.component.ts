@@ -18,11 +18,13 @@ export class HeroDetailWithParamComponent implements OnInit{
 	ngOnInit() {
 		var id = parseInt(this._routeParams.get('id'));
 		
-		this._heroService.getHero(id, json=> {			
-			this.hero = json.hero;			
-		});
+		// pass in the callback method as parameter
+		//this._heroService.getHero(id, json=> {			
+		//	this.hero = json.hero;			
+		//});
 
-		//this.hero = this._heroService.getHero(id).hero;
+		// invoke subscribe method of observable object to set the hero object
+		this._heroService.getHeroJson(id).subscribe(x=> this.hero = x, error=> console.log(error));
 	}
 
 	goBack() {

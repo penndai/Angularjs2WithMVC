@@ -30,10 +30,10 @@ System.register(['angular2/core', "angular2/router", './apihero.service'], funct
                 HeroDetailWithParamComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var id = parseInt(this._routeParams.get('id'));
-                    this._heroService.getHero(id, function (json) {
-                        _this.hero = json.hero;
-                    });
-                    //this.hero = this._heroService.getHero(id).hero;
+                    //this._heroService.getHero(id, json=> {			
+                    //	this.hero = json.hero;			
+                    //});
+                    this._heroService.getHeroJson(id).subscribe(function (x) { return _this.hero = x; }, function (error) { return console.log(error); });
                 };
                 HeroDetailWithParamComponent.prototype.goBack = function () {
                     window.history.back();
