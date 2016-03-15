@@ -46,6 +46,11 @@ System.register(["angular2/core", "angular2/router", "./components/static.compon
                                 path: "/heros",
                                 name: "Heros",
                                 loader: function () { return System.import("app/components/heroTutorial/heroapp.component").then(function (x) { return x["HeroAppComponent"]; }); }
+                            }),
+                            new router_1.AsyncRoute({
+                                path: "/basic",
+                                name: "Basic",
+                                loader: function () { return System.import("app/components/basics/form/herosform.component").then(function (x) { return x["HeroFormComponent"]; }); }
                             })
                         ];
                         this.router.config(this.routes);

@@ -36,6 +36,11 @@ export class AppComponent implements OnInit {
 					path: "/heros",
 					name: "Heros",
 					loader:()=>System.import("app/components/heroTutorial/heroapp.component").then(x=>x["HeroAppComponent"])
+				}),
+				new AsyncRoute({
+					path: "/basic",
+					name: "Basic",
+					loader: () => System.import("app/components/basics/form/herosform.component").then(x=> x["HeroFormComponent"])
 				})
             ];
 
